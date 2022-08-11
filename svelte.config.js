@@ -5,7 +5,14 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess(),
+	preprocess: preprocess({
+		sass: {
+			renderSync: true,
+		},
+		scss: {
+			prependData: `@import './src/styles/variables.scss';`,
+		}
+	}),
 
 	kit: {
 		adapter: adapter()
