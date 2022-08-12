@@ -11,6 +11,24 @@
   $error: variables.$dark-error
 );
 
+@use '@material/typography/index' as typography with (
+  $font-family: variables.$font-family,
+  $styles-button: (
+    text-transform: "none",
+    font-weight: 400,
+    font-size: 16px,
+    letter-spacing: 0,
+  )
+  // $font-weight-values: (
+  //   thin: 100,
+  //   light: 300,
+  //   regular: 400,
+  //   medium: 500,
+  //   bold: 700,
+  //   black: 900,
+  // )
+);
+
 html,
 body {
   background-color: #000;

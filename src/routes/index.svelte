@@ -9,8 +9,8 @@
 <Button variant="raised">
   <Label>Raised</Label>
 </Button>
-<Button variant="unelevated">
-  <Label>Unelevated</Label>
+<Button variant="unelevated" size={1}>
+  <Label>Send a bill</Label>
 </Button>
 <Button variant="outlined">
   <Label>Outlined</Label>
@@ -19,5 +19,5 @@
   <Label>Raised</Label>
 </Button>
 <Button color="secondary" variant="unelevated">
-  <Label>Unelevated</Label>
+  Usad
 </Button>

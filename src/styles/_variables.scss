@@ -2,17 +2,17 @@
 
 @use '@material/theme/color-palette';
 
-$primary-color: #0074e6;
-$secondary-color: #ffdc00;
+$primary-color: #0126df;
+$secondary-color: #f5db3c;
 $surface: #fff;
 $background: #fff;
 $error: color-palette.$red-900;
 
-$dark-primary-color: #ff3e00;
-$dark-secondary-color: color.scale(#676778, $whiteness: -10%);
+$dark-primary-color: #0126df;
+$dark-secondary-color: color.scale(#f5db3c, $whiteness: -10%);
 $dark-surface: color.adjust(color-palette.$grey-900, $blue: +4);
 $dark-background: #000;
 $dark-error: color-palette.$red-700;
 
-$font-family: 'Nunito', sans-serif;
+$font-family: 'Lato', sans-serif;
 $base-font-size: 16px;

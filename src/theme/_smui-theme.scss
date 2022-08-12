@@ -2,13 +2,34 @@
 @use 'sass:color';
 @use '@material/theme/color-palette';
 
-// Svelte Colors!
 @use '@material/theme/index' as theme with (
   $primary: variables.$primary-color,
   $secondary: variables.$secondary-color,
   $surface: variables.$surface,
   $background: variables.$background,
-  $error: variables.$error
+  $error: variables.$error,
+  // $on-error,
+  // $on-primary,
+  // $on-secondary,
+  // $on-surface,
+);
+
+@use '@material/typography/index' as typography with (
+  $font-family: variables.$font-family,
+  $styles-button: (
+    text-transform: "none",
+    font-weight: 400,
+    font-size: 16px,
+    letter-spacing: 0,
+  )
+  // $font-weight-values: (
+  //   thin: 100,
+  //   light: 300,
+  //   regular: 400,
+  //   medium: 500,
+  //   bold: 700,
+  //   black: 900,
+  // )
 );
 
 html,
