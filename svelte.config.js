@@ -10,7 +10,7 @@ const config = {
 			renderSync: true,
 		},
 		scss: {
-			prependData: `@import './src/styles/variables.scss';`,
+			prependData: `@use '@material/theme/color-palette' as colors; @import './src/styles/variables.scss';`,
 		}
 	}),
 

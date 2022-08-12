@@ -1,9 +1,11 @@
 <script lang="ts">
+  import Navbar from "$lib/shared/components/Navbar.svelte";
   import Button, { Label } from "@smui/button";
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="page-container">
+  <Navbar />
+</div>
 
 
 <Button variant="raised">
@@ -21,3 +23,10 @@
 <Button color="secondary" variant="unelevated">
   Usad
 </Button>
+
+<style lang="scss">
+  .page-container {
+    height: 250px;
+    background-color: colors.$blue-50;
+  }
+</style>

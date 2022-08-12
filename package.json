@@ -19,6 +19,8 @@
 		"@material/typography": "^13.0.0",
 		"@playwright/test": "^1.22.2",
 		"@smui/button": "^6.0.0",
+		"@smui/icon-button": "^6.0.0",
+		"@smui/top-app-bar": "^6.0.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
