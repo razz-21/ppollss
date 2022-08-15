@@ -1,26 +1,80 @@
 <script lang="ts">
-  import TopAppBar, { Row, Section, Title } from '@smui/top-app-bar';
-  import IconButton from '@smui/icon-button';
+  import Button, { Label } from "@smui/button";
+  import { page } from "$app/stores";
 
-  let prominent = false;
-  let dense = false;
+  let currentRoute = $page.url.pathname;
+
 </script>
 
-<div class="navbar-wrapper">
-  <TopAppBar variant="static" color="primary" reversed={true}>
-    <Row>
-      <Section>
-        <IconButton class="material-icons">menu</IconButton>
-        <Title>Ppolls</Title>
-      </Section>
-    </Row>
-  </TopAppBar>
+<div class="navbar">
+  <div class="container">
+    <div class="navbar__title">Ppollss</div>
+    <div class="navbar__nav">
+      <div class="navbar__nav-item" class:active={ currentRoute === "/" }>
+        <a href="/">Public Pools</a>
+      </div>
+      <div class="divider"></div>
+      <div class="navbar__nav-item" class:active={ currentRoute === "/login" }>
+        <a href="/">Login</a>
+      </div>
+      <Button variant="unelevated">
+        <Label>Sign up</Label>
+      </Button>
+    </div>
+  </div>
 </div>
 
 <style lang="scss">
   .navbar {
-    &-wrapper {
-      width: 100%;
+    width: 100%;
+    height: 70px;
+    padding: 0.5rem 2rem;
+    background-color: #FFFFFF;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    &__title {
+      padding: 0.5rem 1.25rem;
+      background-color: colors.$blue-50;
+      font-size: 18px;
+      font-style: italic;
+      border-radius: 20px;
+    }
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+      color: colors.$grey-700;
+
+      &-item {
+        a {
+          padding: 0.5rem;
+          color: inherit;
+          outline: 0;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        &.active {
+          a {
+            color: colors.$orange-a400;
+          }
+        }
+      }
+
+      .divider {
+        width: 1.5px;
+        height: 20px;
+        background-color: colors.$grey-300;
+      }
     }
   }
 </style>

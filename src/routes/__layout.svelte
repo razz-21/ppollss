@@ -23,8 +23,15 @@
   <link rel="stylesheet" href="./src/styles/smui.css" />
   <!-- <link rel="stylesheet" href="./src/styles/smui-dark.css" media="screen and (prefers-color-scheme: dark)" /> -->
 </svelte:head>
+<svelte:body style="background-color: red;"></svelte:body>
 
 
 <main>
   <slot />
 </main>
+
+<style lang="scss">
+  :global(body)  {
+    background-color: colors.$grey-100;
+  }
+</style>

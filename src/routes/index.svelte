@@ -27,6 +27,6 @@
 <style lang="scss">
   .page-container {
     height: 250px;
-    background-color: colors.$blue-50;
+    // background-color: colors.$blue-50;
   }
 </style>
