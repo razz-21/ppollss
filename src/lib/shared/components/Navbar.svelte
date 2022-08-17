@@ -2,7 +2,7 @@
   import Button, { Label } from "@smui/button";
   import { page } from "$app/stores";
 
-  let currentRoute = $page.url.pathname;
+  $: currentRoute = $page.url.pathname;
 
 </script>
 

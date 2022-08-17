@@ -1,11 +1,7 @@
-<div class="pools__wrapper">
+<div class="pools__wrapper" on:click>
   <div class="pools__tags">
-    <div class="tag-item">
-      Entertainment
-    </div>
-    <div class="tag-item">
-      Food
-    </div>
+    <PoolChip color={PoolChipColor.CYAN} text="Sample"/>
+    <PoolChip color={PoolChipColor.CYAN} text="Sample"/>
   </div>
   <div class="pools__title">How do you like you coffee and make it sweet like you never did it before?</div>
   <div class="pools__details">
@@ -13,11 +9,14 @@
       <span class="author-name">Ernesto C. Razo Jr</span>
       <div class="dot"></div> <span>3 weeks ago</span>
     </div>
-    <div class="pools__total-votes">100k</div>
+    <div class="pools__total-votes">100k Votes</div>
   </div>
 </div>
 
-<script lang="ts"></script>
+<script lang="ts">
+  import PoolChip from "./PoolChip.svelte";
+  import { PoolChipColor } from "$types/pool-chip-color";
+</script>
 
 <style lang="scss">
   .pools {

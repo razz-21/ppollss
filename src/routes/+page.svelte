@@ -1,17 +1,19 @@
 <script lang="ts">
-  import Navbar from "$lib/shared/components/Navbar.svelte";
   import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
+  import { goto } from "$app/navigation";
+
+  function handlePoolsCardClick(): void {
+    goto("/poll/123");
+  }
 </script>
 
 <div class="page-container">
-  <Navbar />
-
   <div class="pools__content-container">
     <h1>PUBLIC POOLS</h1>
     <p>List of public pools created by the users.</p>
     <p></p>
     <div class="pools__items">
-      <PoolsCard />
+      <PoolsCard on:click={ () => handlePoolsCardClick() } />
       <PoolsCard />
       <PoolsCard />
     </div>

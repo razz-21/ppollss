@@ -1,10 +1,14 @@
 <script lang="ts">
+  import { page } from "$app/stores";
+  import Navbar from "$lib/shared/components/Navbar.svelte";
+
   import "$styles/style.scss";
 
   /** Catch if the system is on dark mode */
   // onMount(() => {
   //   darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
   // });
+  const baseUrl = $page.url.origin
 </script>
 
 <svelte:head>
@@ -20,18 +24,19 @@
 /> -->
 
   <!-- SMUI -->
-  <link rel="stylesheet" href="./src/styles/smui.css" />
+  <link rel="stylesheet" href={`${baseUrl}/src/styles/smui.css`} />
   <!-- <link rel="stylesheet" href="./src/styles/smui-dark.css" media="screen and (prefers-color-scheme: dark)" /> -->
 </svelte:head>
-<svelte:body style="background-color: red;"></svelte:body>
 
 
 <main>
+  <Navbar />
   <slot />
 </main>
 
 <style lang="scss">
   :global(body)  {
+    min-height: 100vh;
     background-color: colors.$grey-100;
   }
 </style>
