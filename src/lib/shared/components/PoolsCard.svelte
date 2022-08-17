@@ -75,15 +75,6 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
-
-      .tag-item {
-        width: min-content;
-        padding: 0.315rem 0.75rem;
-        background-color: colors.$blue-100;
-        color: colors.$blue-900;
-        border-radius: 25px;
-        font-size: 12px;
-      }
     }
   }
 </style>

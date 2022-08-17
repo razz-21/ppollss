@@ -14,8 +14,8 @@
     <p></p>
     <div class="pools__items">
       <PoolsCard on:click={ () => handlePoolsCardClick() } />
-      <PoolsCard />
-      <PoolsCard />
+      <PoolsCard on:click={ () => handlePoolsCardClick() } />
+      <PoolsCard on:click={ () => handlePoolsCardClick() } />
     </div>
   </div>
 </div>
