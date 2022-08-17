@@ -51,7 +51,7 @@
     &__nav {
       display: flex;
       align-items: center;
-      column-gap: 1rem;
+      column-gap: 0.75rem;
       color: colors.$grey-700;
 
       &-item {

@@ -1,32 +1,49 @@
 <script lang="ts">
   import Navbar from "$lib/shared/components/Navbar.svelte";
-  import Button, { Label } from "@smui/button";
+  import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
 </script>
 
 <div class="page-container">
   <Navbar />
+
+  <div class="pools__content-container">
+    <h1>PUBLIC POOLS</h1>
+    <p>List of public pools created by the users.</p>
+    <p></p>
+    <div class="pools__items">
+      <PoolsCard />
+      <PoolsCard />
+      <PoolsCard />
+    </div>
+  </div>
 </div>
 
-
-<Button variant="raised">
-  <Label>Raised</Label>
-</Button>
-<Button variant="unelevated" size={1}>
-  <Label>Send a bill</Label>
-</Button>
-<Button variant="outlined">
-  <Label>Outlined</Label>
-</Button>
-<Button color="secondary" variant="raised">
-  <Label>Raised</Label>
-</Button>
-<Button color="secondary" variant="unelevated">
-  Usad
-</Button>
-
 <style lang="scss">
-  .page-container {
-    height: 250px;
-    // background-color: colors.$blue-50;
+  .pools {
+    &__content {
+      &-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+
+        h1 {
+          font-size: 48px;
+          font-weight: 900;
+        }
+        p {
+          font-size: 18px;
+          font-style: italic;
+          color: colors.$grey-600;
+        }
+      }
+    }
+
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem 1rem;
+      margin-top: 3rem;
+    }
   }
 </style>
