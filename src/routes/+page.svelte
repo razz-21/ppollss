@@ -1,6 +1,12 @@
 <script lang="ts">
-  import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
   import { goto } from "$app/navigation";
+  import type { Pool } from "$interfaces/pool.interface";
+  import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
+
+  export let data: Pool[];
+  export let errors;
+
+  console.log(data);
 
   function handlePoolsCardClick(): void {
     goto("/poll/123");

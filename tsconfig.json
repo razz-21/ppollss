@@ -13,7 +13,8 @@
 			"$types/*": ["src/types/*"],
 			"$lib/*": ["src/lib/*"],
 			"$shared-components/*": ["src/lib/shared/components/*"],
-			"$styles": ["src/styles/*"]
+			"$styles": ["src/styles/*"],
+			"$interfaces/*": ["src/interfaces/*"]
 		}
 	}
 }

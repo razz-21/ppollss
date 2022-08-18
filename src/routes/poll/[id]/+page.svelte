@@ -3,9 +3,10 @@
   import Button from "@smui/button/src/Button.svelte";
   import { PoolChipColor } from "$types/pool-chip-color";
   import { Label } from "@smui/button";
-  import { goto } from "$app/navigation";
 
-  let poolChoice = "";
+  // export let data;
+  // export let errors;
+  let poolChoice = ""
 </script>
 
 
@@ -40,7 +41,7 @@
       <input type="radio" bind:group={poolChoice} checked={poolChoice === "Value 3"} value="Value 3">
       <span>Text here</span>
       <span style="margin-left: auto;">50%</span>
-      <div class="progress" style:width={"0"}></div>
+      <div class="progress" style:width={"100%"}></div>
     </div>
   </div>
 

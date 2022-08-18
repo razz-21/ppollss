@@ -1,14 +1,18 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { page } from "$app/stores";
   import Navbar from "$lib/shared/components/Navbar.svelte";
-
   import "$styles/style.scss";
 
-  /** Catch if the system is on dark mode */
-  // onMount(() => {
-  //   darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  // });
-  const baseUrl = $page.url.origin
+  const baseUrl = $page.url.origin;
+
+  onMount(() => {
+    if (typeof window !== "undefined") {
+      // app;
+      // analytics;
+    }
+    // darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 </script>
 
 <svelte:head>
