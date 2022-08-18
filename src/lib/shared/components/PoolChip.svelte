@@ -24,7 +24,7 @@
 
   }
 
-  export let color: PoolChipColor = PoolChipColor.ORANGE;
+  export let color: string = PoolChipColor.BLUE;
   export let text: string = "";
 </script>
 

@@ -1,21 +1,24 @@
 <div class="pools__wrapper" on:click>
   <div class="pools__tags">
-    <PoolChip color={PoolChipColor.CYAN} text="Sample"/>
-    <PoolChip color={PoolChipColor.CYAN} text="Sample"/>
+    {#each pool.tags as tag}
+      <PoolChip color={tag.color} text={tag.name}/>
+    {/each}
   </div>
-  <div class="pools__title">How do you like you coffee and make it sweet like you never did it before?</div>
+  <div class="pools__title">{pool.title}</div>
   <div class="pools__details">
     <div class="pools__author-time-duration">
-      <span class="author-name">Ernesto C. Razo Jr</span>
+      <span class="author-name">{pool.author}</span>
       <div class="dot"></div> <span>3 weeks ago</span>
     </div>
-    <div class="pools__total-votes">100k Votes</div>
+    <div class="pools__total-votes">{pool.totalVotes} Votes</div>
   </div>
 </div>
 
 <script lang="ts">
   import PoolChip from "./PoolChip.svelte";
-  import { PoolChipColor } from "$types/pool-chip-color";
+  import type { Pool } from "$interfaces/pool.interface";
+
+  export let pool: Pool;
 </script>
 
 <style lang="scss">

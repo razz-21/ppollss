@@ -1,4 +1,5 @@
 export interface Pool {
+  docId?: string;
   title: string;
   author: string;
   options: PoolOption[];

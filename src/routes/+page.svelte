@@ -3,13 +3,11 @@
   import type { Pool } from "$interfaces/pool.interface";
   import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
 
-  export let data: Pool[];
+  export let data: {pools: Pool[]};
   export let errors;
 
-  console.log(data);
-
-  function handlePoolsCardClick(): void {
-    goto("/poll/123");
+  function handlePoolsCardClick(docId: string | undefined): void {
+    goto(`/poll/${docId}`);
   }
 </script>
 
@@ -19,9 +17,9 @@
     <p>List of public pools created by the users.</p>
     <p></p>
     <div class="pools__items">
-      <PoolsCard on:click={ () => handlePoolsCardClick() } />
-      <PoolsCard on:click={ () => handlePoolsCardClick() } />
-      <PoolsCard on:click={ () => handlePoolsCardClick() } />
+      {#each data.pools as pool}
+        <PoolsCard {pool} on:click={ () => handlePoolsCardClick(pool.docId) } />
+      {/each}
     </div>
   </div>
 </div>

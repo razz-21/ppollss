@@ -7,6 +7,6 @@ export async function load() {
   const poolsDocsSnapshot = await getDocs(collection(firestore, "pools"));
 
   return {
-    pools: poolsDocsSnapshot.docs.map(doc => doc.data())
+    pools: poolsDocsSnapshot.docs.map(doc => ({...doc.data(), docId: doc.id}))
   }
 }
