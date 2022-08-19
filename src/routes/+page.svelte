@@ -1,10 +1,26 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { goto } from "$app/navigation";
+  import { firestore } from "../firebase";
+  import { collection, getDocs } from "firebase/firestore";
   import type { Pool } from "$interfaces/pool.interface";
   import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
+  import CircularProgress from '@smui/circular-progress';
 
-  export let data: {pools: Pool[]};
+  export let data: unknown;
   export let errors;
+
+  let pools: Pool[] = [];
+  let isLoading = true;
+
+  getPolls();
+
+  async function getPolls(): Promise<void> {
+    const poolsDocsSnapshot = await getDocs(collection(firestore, "pools"));
+    pools = poolsDocsSnapshot.docs.map(doc => ({...doc.data(), docId: doc.id})) as Pool[];
+    isLoading = false;
+
+  }
 
   function handlePoolsCardClick(docId: string | undefined): void {
     goto(`/poll/${docId}`);
@@ -17,9 +33,17 @@
     <p>List of public pools created by the users.</p>
     <p></p>
     <div class="pools__items">
-      {#each data.pools as pool}
-        <PoolsCard {pool} on:click={ () => handlePoolsCardClick(pool.docId) } />
-      {/each}
+      {#if isLoading }
+        <CircularProgress style="height: 42px; width: 42px; margin: 0 auto;" indeterminate />
+      {:else}
+        {#if pools.length === 0}
+          <div style="text-align: center;">No pools created.</div>
+        {:else}
+          {#each pools as pool}
+            <PoolsCard {pool} on:click={ () => handlePoolsCardClick(pool.docId) } />
+          {/each}
+        {/if}
+      {/if}
     </div>
   </div>
 </div>
