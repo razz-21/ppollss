@@ -14,7 +14,8 @@
 			"$lib/*": ["src/lib/*"],
 			"$shared-components/*": ["src/lib/shared/components/*"],
 			"$styles": ["src/styles/*"],
-			"$interfaces/*": ["src/interfaces/*"]
+			"$interfaces/*": ["src/interfaces/*"],
+			"$src/*": ["src/*"]
 		}
 	}
 }

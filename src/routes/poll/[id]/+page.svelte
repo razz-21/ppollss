@@ -1,48 +1,56 @@
 <script lang="ts">
-  import PoolChip from "$lib/shared/components/PoolChip.svelte";
-  import Button from "@smui/button/src/Button.svelte";
+  import { doc, getDoc } from "firebase/firestore";
+  import { firestore } from "../../../firebase"
+  import type { Pool } from "$interfaces/pool.interface";
   import { PoolChipColor } from "$types/pool-chip-color";
-  import { Label } from "@smui/button";
+  import PoolChip from "$lib/shared/components/PoolChip.svelte";
+  import Button, { Label } from "@smui/button";
+  import CircularProgress from '@smui/circular-progress';
 
   // export let data;
   // export let errors;
-  let poolChoice = ""
+  let poolDetails: Pool;
+  let poolChoice = "";
+  let isLoading = true;
+  let userAlreadyVoted = false;
+
+
+  getPoolDetails();
+
+  async function getPoolDetails(): Promise<void> {
+    const poolDetailsDocSnapshot = await getDoc(doc(firestore, "pools", "QKYOXVMWb0JgipxFCLWq"));
+    poolDetails = poolDetailsDocSnapshot.data() as Pool;
+    isLoading = false;
+  }
 </script>
 
 
 <div class="pool-details__container">
-  <div class="pool-details__tags">
-    <PoolChip color={PoolChipColor.ORANGE} text="Sample" />
+  {#if isLoading}
+    <CircularProgress style="height: 42px; width: 42px; display: flex; margin: 0 auto;" indeterminate />
+  {:else}
+    <div class="pool-details__tags">
+    {#each poolDetails?.tags as tag}
+      <PoolChip color={tag.color} text={tag.name}/>
+    {/each}
   </div>
   <div class="pool-details__title">
-    How do you like you coffee and make it sweet like you never did it before?
+    {poolDetails?.title}
   </div>
   <div class="pool-details__subtext">
-    by <span>Ernesto Razo Jr</span> about 4 hours ago.
+    by <span>{poolDetails?.author}</span> about 4 hours ago.
   </div>
   
   <div class="pool-details__choices">
-    <div class="choices-item" class:selected={poolChoice === "Value 1"} on:click={() => poolChoice = "Value 1"}>
-      <div class="checkmark"></div>
-      <input type="radio" bind:group={poolChoice} checked={poolChoice === "Value 1"} value="Value 1">
-      <span>Text here</span>
-      <span style="margin-left: auto;">50%</span>
-      <div class="progress" style:width={"0"}></div>
-    </div>
-    <div class="choices-item" class:selected={poolChoice === "Value 2"} on:click={() => poolChoice = "Value 2"}>
-      <div class="checkmark"></div>
-      <input type="radio" bind:group={poolChoice} checked={poolChoice === "Value 2"} value="Value 2">
-      <span>Text here</span>
-      <span style="margin-left: auto;">50%</span>
-      <div class="progress" style:width={"0"}></div>
-    </div>
-    <div class="choices-item" class:selected={poolChoice === "Value 3"} on:click={() => poolChoice = "Value 3"}>
-      <div class="checkmark"></div>
-      <input type="radio" bind:group={poolChoice} checked={poolChoice === "Value 3"} value="Value 3">
-      <span>Text here</span>
-      <span style="margin-left: auto;">50%</span>
-      <div class="progress" style:width={"100%"}></div>
-    </div>
+    {#each poolDetails.options as option}
+      <div class="choices-item" class:selected={poolChoice === option.text} on:click={() => poolChoice = option.text}>
+        <div class="checkmark"></div>
+        <input type="radio" bind:group={poolChoice} checked={poolChoice === option.text} value={option.text}>
+        <span>{option.text}</span>
+        <span style="margin-left: auto;">50%</span>
+        <div class="progress" style:width={"0"}></div>
+      </div>
+    {/each}
   </div>
 
   <div class="pool-details__actions-btns">
@@ -53,6 +61,7 @@
       <Label>Submit Vote</Label>
     </Button>
   </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -67,7 +76,7 @@
     &__tags {
       display: flex;
       align-items: center;
-      gap: 2rem 1rem;
+      gap: 2rem 0.5rem;
       margin-bottom: 1rem;
     }
 

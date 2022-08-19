@@ -19,7 +19,6 @@
     const poolsDocsSnapshot = await getDocs(collection(firestore, "pools"));
     pools = poolsDocsSnapshot.docs.map(doc => ({...doc.data(), docId: doc.id})) as Pool[];
     isLoading = false;
-
   }
 
   function handlePoolsCardClick(docId: string | undefined): void {
