@@ -4,10 +4,12 @@
   import { firestore } from "../firebase";
   import { collection, getDocs } from "firebase/firestore";
   import type { Pool } from "$interfaces/pool.interface";
-  import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
+  import type { PageData } from "@sveltejs/kit/types/internal";
   import CircularProgress from '@smui/circular-progress';
+  import Button, { Label } from "@smui/button";
+  import PoolsCard from "$lib/shared/components/PoolsCard.svelte";
 
-  export let data: unknown;
+  export let data: PageData;
   export let errors;
 
   let pools: Pool[] = [];
@@ -24,13 +26,23 @@
   function handlePoolsCardClick(docId: string | undefined): void {
     goto(`/poll/${docId}`);
   }
+
+  function navigateToAddPoll(event: CustomEvent): void {
+    goto(`/poll/add`);
+  }
 </script>
 
 <div class="page-container">
   <div class="pools__content-container">
-    <h1>PUBLIC POOLS</h1>
-    <p>List of public pools created by the users.</p>
-    <p></p>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <h1>PUBLIC POOLS</h1>
+        <p>List of public pools created by the users.</p>
+      </div>
+      <Button variant="unelevated" on:click={navigateToAddPoll}>
+        <Label>Add new Poll</Label>
+      </Button>
+    </div>
     <div class="pools__items">
       {#if isLoading }
         <CircularProgress style="height: 42px; width: 42px; margin: 0 auto;" indeterminate />
@@ -74,5 +86,10 @@
       gap: 2rem 1rem;
       margin-top: 3rem;
     }
+  }
+
+  #fab__add-poll {
+    position: absolute;
+    right: 0;
   }
 </style>

@@ -8,14 +8,6 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"strict": true,
-		"paths": {
-			"$types/*": ["src/types/*"],
-			"$lib/*": ["src/lib/*"],
-			"$shared-components/*": ["src/lib/shared/components/*"],
-			"$styles": ["src/styles/*"],
-			"$interfaces/*": ["src/interfaces/*"],
-			"$src/*": ["src/*"]
-		}
+		"strict": true
 	}
 }

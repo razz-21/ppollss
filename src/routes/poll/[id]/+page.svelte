@@ -2,23 +2,23 @@
   import { doc, getDoc } from "firebase/firestore";
   import { firestore } from "../../../firebase"
   import type { Pool } from "$interfaces/pool.interface";
+  import type { PageData } from "@sveltejs/kit/types/internal";
   import { PoolChipColor } from "$types/pool-chip-color";
   import PoolChip from "$lib/shared/components/PoolChip.svelte";
   import Button, { Label } from "@smui/button";
   import CircularProgress from '@smui/circular-progress';
 
-  // export let data;
+  export let data: PageData;
   // export let errors;
   let poolDetails: Pool;
   let poolChoice = "";
   let isLoading = true;
   let userAlreadyVoted = false;
 
-
   getPoolDetails();
 
   async function getPoolDetails(): Promise<void> {
-    const poolDetailsDocSnapshot = await getDoc(doc(firestore, "pools", "QKYOXVMWb0JgipxFCLWq"));
+    const poolDetailsDocSnapshot = await getDoc(doc(firestore, "pools", data.id));
     poolDetails = poolDetailsDocSnapshot.data() as Pool;
     isLoading = false;
   }

@@ -15,6 +15,13 @@ const config = {
 	}),
 
 	kit: {
+		alias: {
+			"$sharedComponents/*": "./src/lib/shared/components/*",
+			"$types/*": "./src/types/*",
+			"$styles/*": "./src/styles/*",
+			"$interfaces/*": "./src/interfaces/*",
+			"$src/*": "./src/*"
+		},
 		adapter: adapter()
 	}
 };
