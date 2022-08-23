@@ -18,6 +18,7 @@ const config = {
 		alias: {
 			"$sharedComponents/*": "./src/lib/shared/components/*",
 			"$helpers/*": "./src/lib/shared/helpers/*",
+			"$actions/*": "./src/lib/actions/*",
 			"$types/*": "./src/types/*",
 			"$styles/*": "./src/styles/*",
 			"$interfaces/*": "./src/interfaces/*",

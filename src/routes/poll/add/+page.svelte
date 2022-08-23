@@ -104,16 +104,18 @@
     <div class="form-poll-tags">
       <div class="form-input">
         <label class="form-label" for="poll-tags">Tags:</label>
-        <ColorPicker />
-        <input
-          type="text"
-          name="poll-tags"
-          id="poll-tags"
-          class="small"
-          placeholder="Add tags"
-          bind:value={tag.name}
-          on:keyup|preventDefault={(event) => event.key === "Enter" && addTag()}
-        />
+        <div style="display: flex; align-items: center; column-gap: 0.5rem">
+          <ColorPicker />
+          <input
+            type="text"
+            name="poll-tags"
+            id="poll-tags"
+            class="small"
+            placeholder="Add tags"
+            bind:value={tag.name}
+            on:keyup|preventDefault={(event) => event.key === "Enter" && addTag()}
+          />
+        </div>
       </div>
       <div class="tag-list">
         {#each pollData.tags as tag}

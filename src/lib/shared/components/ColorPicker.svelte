@@ -1,5 +1,6 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
+  import { clickOutside } from "$actions/clickOutside";
 
   const colorList: {[key: string]: { background: string, textColor: string }} = {
     RED: { background: "#ffcdd2", textColor: "#b71c1c" },
@@ -26,7 +27,7 @@
   }
 </script>
 
-<div class="color-picker__wrapper">
+<div class="color-picker__wrapper" use:clickOutside on:outsideclick={() => showColors = false}>
   <div
     class="color-selected"
     style="background-color: {selectedColor.background};"

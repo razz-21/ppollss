@@ -8,6 +8,7 @@ const config = {
 		alias: {
 			$sharedComponents: resolve("./src/lib/shared/components"),
 			$helpers: resolve("./src/lib/shared/helpers"),
+			$actions: resolve("./src/lib/actions"),
 			$store: resolve("./src/store"),
 			$styles: resolve("./src/styles"),
 			$types: resolve("./src/types"),
