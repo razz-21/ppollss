@@ -3,6 +3,7 @@
   import { firestore } from "$src/firebase";
   import type { SnackbarComponentDev } from '@smui/snackbar';
   import PoolChip from "$sharedComponents/PoolChip.svelte";
+  import ColorPicker from "$sharedComponents/ColorPicker.svelte";
   import Button, { Label } from "@smui/button";
   import IconButton from "@smui/icon-button";
   import Snackbar, { Actions, Label as SnackLabel } from '@smui/snackbar';
@@ -103,6 +104,7 @@
     <div class="form-poll-tags">
       <div class="form-input">
         <label class="form-label" for="poll-tags">Tags:</label>
+        <ColorPicker />
         <input
           type="text"
           name="poll-tags"

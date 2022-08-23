@@ -21,7 +21,6 @@
     LIGHT_GREEN: { background: "#dcedc8", textColor: "#33691e" },
     YELLOW: { background: "#fff9c4", textColor: "#f57f17" },
     ORANGE: { background: "#ffe0b2", textColor: "#e65100" },
-
   }
 
   export let color: string = PoolChipColor.BLUE;
