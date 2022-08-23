@@ -1,6 +1,7 @@
 <script lang="ts">
   import { doc, getDoc } from "firebase/firestore";
   import { firestore } from "../../../firebase"
+  import { timeAgo } from "$helpers/timeAgo";
   import type { Pool } from "$interfaces/pool.interface";
   import type { PageData } from "@sveltejs/kit/types/internal";
   import { PoolChipColor } from "$types/pool-chip-color";
@@ -38,7 +39,7 @@
     {poolDetails?.title}
   </div>
   <div class="pool-details__subtext">
-    by <span>{poolDetails?.author}</span> about 4 hours ago.
+    by <span>{poolDetails?.author}</span> about {timeAgo(poolDetails.createdAt.toDate())}.
   </div>
   
   <div class="pool-details__choices">

@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
   import { firestore } from "../firebase";
-  import { collection, getDocs } from "firebase/firestore";
+  import { collection, getDocs, Timestamp } from "firebase/firestore";
   import type { Pool } from "$interfaces/pool.interface";
   import type { PageData } from "@sveltejs/kit/types/internal";
   import CircularProgress from '@smui/circular-progress';
@@ -30,6 +30,8 @@
   function navigateToAddPoll(event: CustomEvent): void {
     goto(`/poll/add`);
   }
+
+  
 </script>
 
 <div class="page-container">

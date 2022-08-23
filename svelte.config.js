@@ -17,6 +17,7 @@ const config = {
 	kit: {
 		alias: {
 			"$sharedComponents/*": "./src/lib/shared/components/*",
+			"$helpers/*": "./src/lib/shared/helpers/*",
 			"$types/*": "./src/types/*",
 			"$styles/*": "./src/styles/*",
 			"$interfaces/*": "./src/interfaces/*",

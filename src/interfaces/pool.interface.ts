@@ -1,3 +1,5 @@
+import type { Timestamp } from "firebase/firestore";
+
 export interface Pool {
   docId?: string;
   title: string;
@@ -8,8 +10,8 @@ export interface Pool {
   color: string;
   userVotes: string[];
   discussions: PoolDiscussions[];
-  updateAt: any;
-  createAt: any;
+  updatedAt: Timestamp;
+  createdAt: Timestamp;
 }
 
 export interface PoolOption {
@@ -34,10 +36,10 @@ export interface PoolDiscussions {
       userId: string;
       userName: string;
       reply: string;
-      createdAt: any;
-      updatedAt: any
+      createdAt: Timestamp;
+      updatedAt: Timestamp
     }
   ],
-  createdAt: any;
-  updatedAt: any
+  createdAt: Timestamp;
+  updatedAt: Timestamp
 }

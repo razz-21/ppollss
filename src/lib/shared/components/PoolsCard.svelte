@@ -8,15 +8,16 @@
   <div class="pools__details">
     <div class="pools__author-time-duration">
       <span class="author-name">{pool.author}</span>
-      <div class="dot"></div> <span>3 weeks ago</span>
+      <div class="dot"></div> <span>{timeAgo(pool.createdAt.toDate())}</span>
     </div>
     <div class="pools__total-votes">{pool.totalVotes} Votes</div>
   </div>
 </div>
 
 <script lang="ts">
-  import PoolChip from "./PoolChip.svelte";
   import type { Pool } from "$interfaces/pool.interface";
+  import PoolChip from "./PoolChip.svelte";
+  import { timeAgo } from "$helpers/timeAgo";
 
   export let pool: Pool;
 </script>

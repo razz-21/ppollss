@@ -1,6 +1,6 @@
 <script lang="ts">
   import { collection, addDoc, Timestamp } from "firebase/firestore";
-  import { firestore } from "../../../firebase";
+  import { firestore } from "$src/firebase";
   import type { SnackbarComponentDev } from '@smui/snackbar';
   import PoolChip from "$sharedComponents/PoolChip.svelte";
   import Button, { Label } from "@smui/button";
@@ -31,7 +31,7 @@
       discussions: [],
       options,
       tags: pollData.tags,
-      totalVotes: [],
+      totalVotes: 0,
       userVotes: [],
       createdAt: Timestamp.now(),
       updatedAt: Timestamp.now()
