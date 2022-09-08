@@ -1,6 +1,9 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { clickOutside } from "$actions/clickOutside";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatcher = createEventDispatcher();
 
   const colorList: {[key: string]: { background: string, textColor: string }} = {
     RED: { background: "#ffcdd2", textColor: "#b71c1c" },
@@ -21,9 +24,10 @@
   let selectedColor: { background: string, textColor: string } = colorList.BLUE;
   let showColors = false;
 
-  function selectColor(color: { background: string, textColor: string }): void {
+  function selectColor(color: { colorName: string, background: string, textColor: string }): void {
     selectedColor = color;
     showColors = false;
+    dispatcher("selectedColor", selectedColor);
   }
 </script>
 
@@ -39,7 +43,7 @@
         <div
           class="color-picker__box"
           style="background-color: {colorList[color].background}"
-          on:click={() => selectColor(colorList[color])}>
+          on:click={() => selectColor({...colorList[color], colorName: color})}>
         </div>
       {/each}
     </div>

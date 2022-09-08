@@ -19,6 +19,7 @@
     options: [""],
     tags: []
   };
+  let selectedColor: { colorName: string, background: string, textColor: string } | null = null;
   let tag = { name: "", color: "" };
   let snackbar: SnackbarComponentDev;
   let snackbarMessage = "";
@@ -48,11 +49,11 @@
   }
 
   function addTag(): void {
-    const newTag = { name: tag.name, color: "BLUE" };
+    const newTag = { name: tag.name, color: selectedColor ? selectedColor.colorName : "BLUE" };
     pollData.tags.push(newTag);
     tag = {
       name: "",
-      color: "BLUE"
+      color: selectedColor ? selectedColor.colorName : "BLUE"
     };
     pollData = pollData;
   }
@@ -63,6 +64,10 @@
       options: [""],
       tags: []
     }
+  }
+
+  function onSelectedColor(event: CustomEvent): void {
+    selectedColor = event.detail;
   }
 
   function onFormSubmit(): void {};
@@ -105,7 +110,7 @@
       <div class="form-input">
         <label class="form-label" for="poll-tags">Tags:</label>
         <div style="display: flex; align-items: center; column-gap: 0.5rem">
-          <ColorPicker />
+          <ColorPicker on:selectedColor={onSelectedColor} />
           <input
             type="text"
             name="poll-tags"
